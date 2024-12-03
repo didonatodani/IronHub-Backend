@@ -7,11 +7,11 @@ const postSchema = new Schema({
     ref: "User",
     required: [true, "Username is required"],
   },
-  course: {
-    type: Schema.Types.ObjectId,
-    ref: "Course",
-    required: [true, "Course is required"],
-  },
+  // course: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Course",
+  //   required: [true, "Course is required"],
+  // },
   title: {
     type: String,
     required: [true, "Title is required"],
