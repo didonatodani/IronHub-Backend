@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post.model");
+const User = require("../models/User.model")
 
 /*Get all post */
 router.get("/", async (req, res, next) => {
   try {
-    const response = await Post.find();
+    const response = await Post.find().populate(User.name);
     if (response) {
       res.json(response);
     } else {

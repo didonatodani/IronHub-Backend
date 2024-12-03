@@ -37,7 +37,7 @@ app.use("/auth", authRoutes);
 
 
 
-const postsRoutes = require("./routes/posts.route");
+const postsRoutes = require("./routes/posts.routes");
 app.use("/posts", postsRoutes);
 
 
