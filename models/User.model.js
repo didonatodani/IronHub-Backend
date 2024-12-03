@@ -26,18 +26,18 @@ const userSchema = new Schema(
     linkedin: {
       type: String,
     },
-    course: {
-      type: mongoose.Schema.Types.CourseId,
-      ref: "Course",
-      required: [true, "Course is required"],
-    },
+    // course: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "Course",
+    //   required: [true, "Course is required"],
+    // },
     languages: {
       type: String,
     },
-    posts: {
-      type: mongoose.Schema.Types.PostId,
-      ref: "Post",
-    },
+    // posts: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "Post",
+    // },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

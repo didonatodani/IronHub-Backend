@@ -2,29 +2,37 @@ const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post.model");
 
-router.get("/", (req, res, next) => {
-  res.json("All good in here");
+router.get("/", async (req, res, next) => {
+  try {
+    const response = await Post.find()
+    res.json(response)
+  } catch (error) {
+    console.log("Error creating a post: ", error);
+  }
 });
 
-module.exports = router;
 
 router.post("/", async (req, res, next) => {
-  const { name, title, description, link, picture, likes, created } = req.body;
+  const { name, course, title, description, link, picture, likes } = req.body;
 
   const newPost = {
     name,
+    course,
     title,
     description,
     link,
     picture,
     likes,
-    created,
-  };
+};
 
-  try {
+try {
     const response = await Post.create(newPost);
     res.json(response)
   } catch (error) {
     console.log("Error creating a post: ", error);
   }
 });
+
+
+
+module.exports = router;
