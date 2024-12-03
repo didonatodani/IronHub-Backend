@@ -50,7 +50,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-/*Get a post by search params*/
+/*Get a post by title using search params*/
 
 router.get("/search", async (req, res) => {
   const { title } = req.query;
@@ -72,7 +72,7 @@ router.get("/search", async (req, res) => {
   }
 });
 
-/*Get a post by title using search params */
+/*Get a post by ID */
 router.get("/:postId", async (req, res, next) => {
   const { postId } = req.params;
 
