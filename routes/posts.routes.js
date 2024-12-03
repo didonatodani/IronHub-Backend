@@ -6,7 +6,7 @@ const User = require("../models/User.model")
 /*Get all post */
 router.get("/", async (req, res, next) => {
   try {
-    const response = await Post.find().populate(User.name);
+    const response = await Post.find().populate('name', 'name');
     if (response) {
       res.json(response);
     } else {
@@ -23,11 +23,10 @@ router.get("/", async (req, res, next) => {
 
 /*Create a post */
 router.post("/", async (req, res, next) => {
-  const { name, course, title, description, link, picture, likes } = req.body;
+  const { name, title, description, link, picture, likes } = req.body;
 
   const newPost = {
     name,
-    course,
     title,
     description,
     link,
