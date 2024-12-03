@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const courseSchema = new Schema({
   name: {
     type: String,
-    enum: ["Data Analytics", "Web Development, UX/UI Design"],
+    enum: ["Data Analytics", "Web Development", "UX/UI Design", "General"],
     required: [true, "Name of the course is required"],
   },
   type: {
