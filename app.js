@@ -19,6 +19,7 @@ const indexRoutes = require("./routes/index.routes");
 app.use("/api", indexRoutes);
 
 const authRoutes = require("./routes/auth.routes");
+const User = require("./models/User.model");
 app.use("/auth", authRoutes);
 
 
