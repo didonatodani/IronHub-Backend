@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 
+
 // TODO: Please make sure you edit the User model to whatever makes sense in thisk case
 const userSchema = new Schema(
   {
@@ -26,18 +27,18 @@ const userSchema = new Schema(
     linkedin: {
       type: String,
     },
-    // course: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "Course",
-    //   required: [true, "Course is required"],
-    // },
+    course: {
+      type: Schema.Types.ObjectId,
+      ref: "Course",
+      required: [true, "Course is required"],
+    },
     languages: {
       type: String,
     },
-    // posts: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "Post",
-    // },
+    posts: {
+      type: Schema.Types.ObjectId,
+      ref: "Post",
+    },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
