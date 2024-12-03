@@ -90,6 +90,41 @@ router.get("/:postId", async (req, res, next) => {
   }
 });
 
+/*Delete a post by ID */
+router.delete("/:postId", async (req, res) => {
+  const { postId } = req.params;
+  try {
+    const response = await Post.findByIdAndDelete(postId);
+    if (response) {
+      res.json(response);
+    } else {
+      res.status(404).json({ message: "No post found with this ID" });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "An error occurred while searching for the post" });
+  }
+})
+
+/*Update a post by ID */
+router.put("/:postId", async(req, res) => {
+  const { postId } = req.params;
+  try {
+    const response = await Post.findByIdAndUpdate(postId, req.body, { new: true });
+    if(response) {
+      res.json(response)
+    } else {
+      res.status(404).json({ message: "No post found with this ID" });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "An error occurred while searching for the post" });
+  }
+})
+
+
 
 
 
