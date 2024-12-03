@@ -32,6 +32,14 @@ app.use("/auth", authRoutes);
 
 
 
+
+
+
+
+const postsRoutes = require("./routes/posts.route");
+app.use("/posts", postsRoutes);
+
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

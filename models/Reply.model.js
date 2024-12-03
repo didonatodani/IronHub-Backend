@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const replySchema = new Schema({
   name: {
-    type: Schema.Types.userId,
+    type: Schema.Types.ObjectId,
     ref: "User",
     required: [true, "Username is required"],
   },

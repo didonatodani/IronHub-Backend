@@ -29,13 +29,11 @@ const userSchema = new Schema(
     },
     course: {
       type: String,
-      enum: ["Data Analytics", "Web Development", "UX/UI Design"],
-      required: [true, "The course is required"],
+      enum: ["Data Analytics", "Web Development", "UX/UI Design"]
     },
     schedule: {
       type: String,
-      enum: ["Full-time", "Part-time"],
-      required: [true, "Type of the course is required"],
+      enum: ["Full-time", "Part-time"]
     },
     languages: {
       type: String,
