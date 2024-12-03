@@ -72,7 +72,7 @@ router.get("/search", async (req, res) => {
   }
 });
 
-/*Get a post by ID */
+/*Get a post by title using search params */
 router.get("/:postId", async (req, res, next) => {
   const { postId } = req.params;
 
