@@ -28,9 +28,14 @@ const userSchema = new Schema(
       type: String,
     },
     course: {
-      type: Schema.Types.ObjectId,
-      ref: "Course",
-      required: [true, "Course is required"],
+      type: String,
+      enum: ["Data Analytics", "Web Development", "UX/UI Design"],
+      required: [true, "The course is required"],
+    },
+    schedule: {
+      type: String,
+      enum: ["Full-time", "Part-time"],
+      required: [true, "Type of the course is required"],
     },
     languages: {
       type: String,
