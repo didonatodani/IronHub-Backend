@@ -6,11 +6,11 @@ const postSchema = new Schema({
     ref: "User",
     required: [true, "Username is required"],
   },
-  course: {
-    type: mongoose.Schema.Types.CourseId,
-    ref: "Course",
-    required: [true, "Course is required"],
-  },
+  // course: {
+  //   type: mongoose.Schema.Types.CourseId,
+  //   ref: "Course",
+  //   required: [true, "Course is required"],
+  // },
   title: {
     type: String,
     required: [true, "Title is required"],
