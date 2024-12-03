@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 
+
 // TODO: Please make sure you edit the User model to whatever makes sense in thisk case
 const userSchema = new Schema(
   {
@@ -27,7 +28,7 @@ const userSchema = new Schema(
       type: String,
     },
     course: {
-      type: mongoose.Schema.Types.CourseId,
+      type: Schema.Types.ObjectId,
       ref: "Course",
       required: [true, "Course is required"],
     },
@@ -35,7 +36,7 @@ const userSchema = new Schema(
       type: String,
     },
     posts: {
-      type: mongoose.Schema.Types.PostId,
+      type: Schema.Types.ObjectId,
       ref: "Post",
     },
   },

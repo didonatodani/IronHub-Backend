@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const replySchema = new Schema({
   name: {
-    type: mongoose.Schema.Types.userId,
+    type: Schema.Types.userId,
     ref: "User",
     required: [true, "Username is required"],
   },
