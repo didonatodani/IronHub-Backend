@@ -40,6 +40,8 @@ router.put("/:userId", async (req, res) => {
   }
 });
 
+
+/*Get posts from user */
 router.get("/:userId/posts", async (req, res) => {
   const { userId } = req.params;
 
