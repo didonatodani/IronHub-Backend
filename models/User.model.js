@@ -38,10 +38,10 @@ const userSchema = new Schema(
     languages: {
       type: String,
     },
-    posts: {
+    posts: [{
       type: Schema.Types.ObjectId,
       ref: "Post",
-    },
+    }],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
