@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post.model");
-const User = require("../models/User.model")
 
 /*Get all post */
 router.get("/", async (req, res, next) => {
   try {
-    const response = await Post.find().populate('name', 'name');
+    const response = await Post.find()
+      .populate("name", "name")
+      .populate("course", "course");
     if (response) {
       res.json(response);
     } else {
@@ -23,10 +24,11 @@ router.get("/", async (req, res, next) => {
 
 /*Create a post */
 router.post("/", async (req, res, next) => {
-  const { name, title, description, link, picture, likes } = req.body;
+  const { name, course, title, description, link, picture, likes } = req.body;
 
   const newPost = {
     name,
+    course,
     title,
     description,
     link,
@@ -101,31 +103,25 @@ router.delete("/:postId", async (req, res) => {
       res.status(404).json({ message: "No post found with this ID" });
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "An error occurred while searching for the post" });
+    res.status(500).json({ message: "The post could not be deleted" });
   }
-})
+});
 
 /*Update a post by ID */
-router.put("/:postId", async(req, res) => {
+router.put("/:postId", async (req, res) => {
   const { postId } = req.params;
   try {
-    const response = await Post.findByIdAndUpdate(postId, req.body, { new: true });
-    if(response) {
-      res.json(response)
+    const response = await Post.findByIdAndUpdate(postId, req.body, {
+      new: true,
+    });
+    if (response) {
+      res.json(response);
     } else {
       res.status(404).json({ message: "No post found with this ID" });
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "An error occurred while searching for the post" });
+    res.status(500).json({ message: "An error occurred modifying the post" });
   }
-})
-
-
-
-
+});
 
 module.exports = router;

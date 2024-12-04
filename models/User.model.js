@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 
-
 // TODO: Please make sure you edit the User model to whatever makes sense in thisk case
 const userSchema = new Schema(
   {
@@ -29,11 +28,11 @@ const userSchema = new Schema(
     },
     course: {
       type: String,
-      enum: ["Data Analytics", "Web Development", "UX/UI Design"]
+      enum: ["Data Analytics", "Web Development", "UX/UI Design"],
     },
     schedule: {
       type: String,
-      enum: ["Full-time", "Part-time"]
+      enum: ["Full-time", "Part-time"],
     },
     languages: {
       type: String,
