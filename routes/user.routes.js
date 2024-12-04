@@ -31,8 +31,8 @@ router.put("/:userId", async (req, res) => {
     const response = await User.findByIdAndUpdate(userId, req.body, { new: true });
     if(response) {
       res.json(response)
-      
-      
+
+
     } else {
       res.status(404).json({ message: "No user found with this id"});
     }
@@ -49,7 +49,7 @@ router.get("/:userId/posts", async (req, res) => {
   const { userId } = req.params;
 
   try {
-    const response = await User.findById(userId).populate("posts", "posts");
+    const response = await User.findById(userId).populate("posts", "title") ;
     if(response) {
       console.log(response.posts)
       res.json(response)
