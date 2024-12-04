@@ -79,7 +79,9 @@ router.get("/:postId", async (req, res, next) => {
   const { postId } = req.params;
 
   try {
-    const response = await Post.findById(postId);
+    const response = await Post.findById(postId)
+    .populate("name", "name")
+    .populate("course", "course");
     if (response) {
       res.json(response);
     } else {
