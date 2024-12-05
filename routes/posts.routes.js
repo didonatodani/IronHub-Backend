@@ -61,7 +61,7 @@ router.get("/search", async (req, res) => {
   const { title } = req.query;
 
   try {
-    const response = await Post.findOne({
+    const response = await Post.find({
       title: { $regex: title, $options: "i" },
     });
 
