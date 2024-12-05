@@ -69,7 +69,7 @@ router.get("/search", async (req, res) => {
     if (response) {
       res.json(response);
     } else {
-      res.status(404).json({ message: "No post found with the given title" });
+      res.status(404).json({ message: "No post found with the given title!" });
     }
   } catch (error) {
     res
