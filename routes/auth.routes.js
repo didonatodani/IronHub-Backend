@@ -1,19 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-// ℹ️ Handles password encryption
-const bcrypt = require("bcrypt");
 
-// ℹ️ Handles password encryption
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// Require the User model in order to interact with the database
 const User = require("../models/User.model");
 
-// Require necessary (isAuthenticated) middleware in order to control access to specific routes
 const { isAuthenticated } = require("../middleware/jwt.middleware.js");
-
-// How many rounds should bcrypt run the salt (default - 10 rounds)
 const saltRounds = 10;
 
 // POST /auth/signup  - Creates a new user in the database
@@ -29,20 +23,18 @@ router.post("/signup", (req, res, next) => {
     languages,
   } = req.body;
 
-  // Check if email or password or name are provided as empty strings
   if (email === "" || password === "" || name === "") {
     res.status(400).json({ message: "Provide email, password and name" });
     return;
   }
 
-  // This regular expression check that the email is of a valid format
+  // These regular expressions check for valid formats:
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if (!emailRegex.test(email)) {
     res.status(400).json({ message: "Provide a valid email address." });
     return;
   }
 
-  // This regular expression checks password for special characters and minimum length
   const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!passwordRegex.test(password)) {
     res.status(400).json({
@@ -55,13 +47,11 @@ router.post("/signup", (req, res, next) => {
   // Check the users collection if a user with the same email already exists
   User.findOne({ email })
     .then((foundUser) => {
-      // If the user with the same email already exists, send an error response
       if (foundUser) {
         res.status(400).json({ message: "User already exists." });
         return;
       }
 
-      // If email is unique, proceed to hash the password
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashedPassword = bcrypt.hashSync(password, salt);
 
@@ -84,7 +74,6 @@ router.post("/signup", (req, res, next) => {
       const { email, name, picture, linkedin, course, schedule, languages } =
         createdUser;
 
-      // Create a new object that doesn't expose the password
       const user = {
         email,
         name,
@@ -95,10 +84,9 @@ router.post("/signup", (req, res, next) => {
         languages,
       };
 
-      // Send a json response containing the user object
       res.status(201).json({ user: user });
     })
-    .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
+    .catch((err) => next(err)); 
 });
 
 // POST  /auth/login - Verifies email and password and returns a JWT
@@ -133,7 +121,7 @@ router.post("/login", (req, res, next) => {
         // Create a JSON Web Token and sign it
         const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {
           algorithm: "HS256",
-          expiresIn: "6h",
+          expiresIn: "20h",
         });
 
         // Send the token as the response

@@ -36,6 +36,7 @@ router.post("/", async (req, res, next) => {
     likes,
   };
 
+
   try {
     const response = await Post.create(newPost);
     if (response) {
@@ -46,6 +47,8 @@ router.post("/", async (req, res, next) => {
         .json({ message: "There are no posts on forum, create a new one" });
     }
   } catch (error) {
+    console.log(error);
+    
     res
       .status(500)
       .json({ message: "An error occurred while creating a the post" });
