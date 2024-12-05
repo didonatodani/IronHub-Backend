@@ -5,27 +5,18 @@ const Post = require("../models/Post.model");
 /*Get all post */
 router.get("/", async (req, res, next) => {
   // default sorting in ascending order
-  // const { course, userId, order= "asc"} = req.query
+  const { course, sortBy = "created", order = "asc"} = req.query;
 
 
   try {
-    // const query = {};
-    // if (course) query.course = course;
-    // if (userId) query.name = userId;
+    const sortOrder = order === "asc" ? 1 : -1;
+    const sortField = sortBy === "title" ? "title" : "created";
+    const query = course && course !== "All Courses" ? { course } : {};
 
-    // const sortOrder = order === "asc" ? 1 : -1;
+    let posts = await Post.find(query).sort( { [sortField] : sortOrder})
 
-    const response = await Post.find()
-      .populate("name", "name")
-      .populate("course", "course")
-      // .sort({ [sortField]: sortOrder})
-    if (response) {
-      res.json(response);
-    } else {
-      res
-        .status(404)
-        .json({ message: "There are no posts on forum, create a new one" });
-    }
+      res.json(posts);
+
   } catch (error) {
     res
       .status(500)
