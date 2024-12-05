@@ -36,7 +36,6 @@ router.post("/", async (req, res, next) => {
     likes,
   };
 
-
   try {
     const response = await Post.create(newPost);
     if (response) {
@@ -63,12 +62,14 @@ router.get("/search", async (req, res) => {
   try {
     const response = await Post.find({
       title: { $regex: title, $options: "i" },
-    });
+    })
+      .populate("name", "name")
+      .populate("course", "course");
 
     if (response) {
       res.json(response);
     } else {
-      res.status(404).json({ message: "No post found with the given title" });
+      res.status(404).json({ message: "No post found with the given title!" });
     }
   } catch (error) {
     res
