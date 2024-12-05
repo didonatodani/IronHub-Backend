@@ -80,7 +80,6 @@ router.get("/search", async (req, res) => {
       title: { $regex: title, $options: "i" },
     })
       .populate("name", "name")
-      .populate("course", "course");
 
     if (response) {
       res.json(response);
