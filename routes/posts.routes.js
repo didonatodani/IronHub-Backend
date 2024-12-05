@@ -25,7 +25,7 @@ router.get("/", async (req, res, next) => {
 /*Create a post */
 router.post("/", async (req, res, next) => {
   const { name, course, title, description, link, picture, likes } = req.body;
-// hello
+  
   const newPost = {
     name,
     course,
