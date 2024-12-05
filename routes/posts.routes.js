@@ -25,7 +25,7 @@ router.get("/", async (req, res, next) => {
 /*Create a post */
 router.post("/", async (req, res, next) => {
   const { name, course, title, description, link, picture, likes } = req.body;
-  
+
   const newPost = {
     name,
     course,
@@ -35,7 +35,6 @@ router.post("/", async (req, res, next) => {
     picture,
     likes,
   };
-
 
   try {
     const response = await Post.create(newPost);
@@ -48,7 +47,7 @@ router.post("/", async (req, res, next) => {
     }
   } catch (error) {
     console.log(error);
-    
+
     res
       .status(500)
       .json({ message: "An error occurred while creating a the post" });
@@ -63,13 +62,13 @@ router.get("/search", async (req, res) => {
   try {
     const response = await Post.find({
       title: { $regex: title, $options: "i" },
-      name
-    });
+    })
+      .populate("name", "name")
 
     if (response) {
       res.json(response);
     } else {
-      res.status(404).json({ message: "No post found with the given title" });
+      res.status(404).json({ message: "No post found with the given title!" });
     }
   } catch (error) {
     res
