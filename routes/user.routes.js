@@ -49,9 +49,8 @@ router.get("/:userId/posts", async (req, res) => {
   const { userId } = req.params;
 
   try {
-    const response = await User.findById(userId).populate("posts", "title") ;
+    const response = await User.findById(userId).populate("posts", "title");
     if(response) {
-      console.log(response.posts)
       res.json(response)
     } else {
       res.status(404).json({ message: "No user found with this id"});

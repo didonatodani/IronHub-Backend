@@ -25,7 +25,7 @@ router.get("/", async (req, res, next) => {
 /*Create a post */
 router.post("/", async (req, res, next) => {
   const { name, course, title, description, link, picture, likes } = req.body;
-  
+
   const newPost = {
     name,
     course,
@@ -48,7 +48,7 @@ router.post("/", async (req, res, next) => {
     }
   } catch (error) {
     console.log(error);
-    
+
     res
       .status(500)
       .json({ message: "An error occurred while creating a the post" });
@@ -126,5 +126,7 @@ router.put("/:postId", async (req, res) => {
     res.status(500).json({ message: "An error occurred modifying the post" });
   }
 });
+
+
 
 module.exports = router;
