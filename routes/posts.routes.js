@@ -4,10 +4,21 @@ const Post = require("../models/Post.model");
 
 /*Get all post */
 router.get("/", async (req, res, next) => {
+  // default sorting in ascending order
+  // const { course, userId, order= "asc"} = req.query
+
+
   try {
+    // const query = {};
+    // if (course) query.course = course;
+    // if (userId) query.name = userId;
+
+    // const sortOrder = order === "asc" ? 1 : -1;
+
     const response = await Post.find()
       .populate("name", "name")
-      .populate("course", "course");
+      .populate("course", "course")
+      // .sort({ [sortField]: sortOrder})
     if (response) {
       res.json(response);
     } else {
@@ -21,6 +32,7 @@ router.get("/", async (req, res, next) => {
       .json({ message: "An error occurred while displaying all the post" });
   }
 });
+
 
 /*Create a post */
 router.post("/", async (req, res, next) => {
@@ -53,6 +65,10 @@ router.post("/", async (req, res, next) => {
       .json({ message: "An error occurred while creating a the post" });
   }
 });
+
+
+
+
 
 /*Get a post by title using search params*/
 
