@@ -7,8 +7,8 @@ const postSchema = new Schema({
     required: [true, "Username is required"],
   },
   course: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+    type: String,
+      enum: ["Data Analytics", "Web Development", "UX/UI Design"],
   },
   title: {
     type: String,

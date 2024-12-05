@@ -63,6 +63,7 @@ router.get("/search", async (req, res) => {
   try {
     const response = await Post.find({
       title: { $regex: title, $options: "i" },
+      name
     });
 
     if (response) {
