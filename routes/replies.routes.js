@@ -3,7 +3,7 @@ const router = express.Router();
 const Post = require("../models/Post.model");
 const Reply = require("../models/Reply.model");
 
-/*Post a reply for a post ID */
+/*Post a reply for a post ID*/
 router.post("/:postId/reply/", async (req, res, next) => {
   const { postId } = req.params;
 
