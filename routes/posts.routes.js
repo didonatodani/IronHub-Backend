@@ -1,29 +1,27 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post.model");
+const Reply = require("../models/Reply.model");
 
 /*Get all post */
 router.get("/", async (req, res, next) => {
   // default sorting in ascending order
-  const { course, sortBy = "created", order = "asc"} = req.query;
-
+  const { course, sortBy = "created", order = "asc" } = req.query;
 
   try {
     const sortOrder = order === "asc" ? 1 : -1;
     const sortField = sortBy === "title" ? "title" : "created";
     const query = course && course !== "All Courses" ? { course } : {};
 
-    let posts = await Post.find(query).sort( { [sortField] : sortOrder}).populate("name", "name")
+    let posts = await Post.find(query).sort({ [sortField]: sortOrder }).populate("name", "name");
 
-      res.json(posts);
-
+    res.json(posts);
   } catch (error) {
     res
       .status(500)
       .json({ message: "An error occurred while displaying all the post" });
   }
 });
-
 
 /*Create a post */
 router.post("/", async (req, res, next) => {
@@ -57,10 +55,6 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-
-
-
-
 /*Get a post by title using search params*/
 
 router.get("/search", async (req, res) => {
@@ -69,8 +63,7 @@ router.get("/search", async (req, res) => {
   try {
     const response = await Post.find({
       title: { $regex: title, $options: "i" },
-    })
-      .populate("name", "name")
+    }).populate("name", "name");
 
     if (response) {
       res.json(response);
@@ -89,7 +82,7 @@ router.get("/:postId", async (req, res, next) => {
   const { postId } = req.params;
 
   try {
-    const response = await Post.findById(postId).populate("name", "name")
+    const response = await Post.findById(postId).populate("name", "name").populate("replies");
     if (response) {
       res.json(response);
     } else {
@@ -133,7 +126,5 @@ router.put("/:postId", async (req, res) => {
     res.status(500).json({ message: "An error occurred modifying the post" });
   }
 });
-
-
 
 module.exports = router;

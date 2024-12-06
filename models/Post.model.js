@@ -27,6 +27,10 @@ const postSchema = new Schema({
   likes: {
     type: Number,
   },
+  replies: [{
+    type: Schema.Types.ObjectId,
+    ref: "Reply",
+  }],
   created: {
     type: Date,
     default: Date.now,
