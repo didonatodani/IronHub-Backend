@@ -17,6 +17,9 @@ const replySchema = new Schema({
   picture: {
     type: String,
   },
+  link: {
+    type: String,
+  },
   likes: {
     type: Number,
   },
