@@ -13,7 +13,9 @@ router.get("/", async (req, res, next) => {
     const sortField = sortBy === "title" ? "title" : "created";
     const query = course && course !== "All Courses" ? { course } : {};
 
-    let posts = await Post.find(query).sort({ [sortField]: sortOrder }).populate("name", "name");
+    let posts = await Post.find(query)
+      .sort({ [sortField]: sortOrder })
+      .populate("name", "name");
 
     res.json(posts);
   } catch (error) {
@@ -82,7 +84,15 @@ router.get("/:postId", async (req, res, next) => {
   const { postId } = req.params;
 
   try {
-    const response = await Post.findById(postId).populate("name", "name").populate("replies");
+    const response = await Post.findById(postId)
+      .populate("name", "name")
+      .populate({
+        path: "replies",
+        populate: {
+          path: "name",
+          select: "name",
+        },
+      });
     if (response) {
       res.json(response);
     } else {
