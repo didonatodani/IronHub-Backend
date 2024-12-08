@@ -6,8 +6,7 @@ const Reply = require("../models/Reply.model");
 /*Post a reply for a post ID*/
 router.post("/:postId/reply/", async (req, res, next) => {
   const { postId } = req.params;
-
-  const { name, description, created, picture, link, likes } = req.body;
+  const { name, description, created, picture, link } = req.body;
 
   const newReply = {
     name,
@@ -15,33 +14,27 @@ router.post("/:postId/reply/", async (req, res, next) => {
     created,
     link,
     picture,
-    likes,
   };
 
   try {
     const createdReply = await Reply.create(newReply);
+
+    // Update the post with the new reply
     const updatePost = await Post.findByIdAndUpdate(
       postId,
       { $push: { replies: createdReply._id } },
       { new: true }
     );
 
+    // Check if the post was updated successfully
     if (updatePost) {
       res.json({ message: "Reply added successfully", reply: createdReply });
     } else {
       res.status(404).json({ message: "Post not found" });
     }
-
-    if (createdReply) {
-      res.json(createdReply);
-    } else {
-      res
-        .status(404)
-        .json({ message: "There are no replies on forum, create a new one" });
-    }
   } catch (error) {
+    // Log the error and send a 500 response
     console.log(error);
-
     res
       .status(500)
       .json({ message: "An error occurred while creating a reply" });

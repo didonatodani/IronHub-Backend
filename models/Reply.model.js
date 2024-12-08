@@ -20,9 +20,6 @@ const replySchema = new Schema({
   link: {
     type: String,
   },
-  likes: {
-    type: Number,
-  },
 });
 
 const Reply = model("Reply", replySchema);
