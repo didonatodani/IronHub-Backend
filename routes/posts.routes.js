@@ -3,6 +3,9 @@ const router = express.Router();
 const Post = require("../models/Post.model");
 const Reply = require("../models/Reply.model");
 
+/*Cloudinary */
+const fileUploader = require("../config/cloudinary.config")
+
 /*Get all post */
 router.get("/", async (req, res, next) => {
   // default sorting in ascending order
@@ -24,6 +27,22 @@ router.get("/", async (req, res, next) => {
       .json({ message: "An error occurred while displaying all the post" });
   }
 });
+
+// POST "/api/upload" => Route that receives the image, sends it to Cloudinary via the fileUploader and returns the image URL
+router.post("/upload", fileUploader.single("picture"), (req, res, next) => {
+  console.log("file is: ", req.file)
+
+  if (!req.file) {
+    next(new Error("No file uploaded!"));
+    return;
+  }
+
+  // Get the URL of the uploaded file and send it as a response.
+  // 'fileUrl' can be any name, just make sure you remember to use the same when accessing it on the frontend
+  res.json({ fileUrl: req.file.path });
+});
+
+
 
 /*Create a post */
 router.post("/", async (req, res, next) => {
