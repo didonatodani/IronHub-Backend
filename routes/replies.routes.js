@@ -3,13 +3,13 @@ const router = express.Router();
 const Post = require("../models/Post.model");
 const Reply = require("../models/Reply.model");
 
-/*Post a reply for a post ID*/
+/* Post a reply for a post ID */
 router.post("/:postId/reply/", async (req, res, next) => {
   const { postId } = req.params;
   const { name, description, created, picture, link } = req.body;
 
   const newReply = {
-    name,
+    name, 
     description,
     created,
     link,
@@ -19,34 +19,39 @@ router.post("/:postId/reply/", async (req, res, next) => {
   try {
     const createdReply = await Reply.create(newReply);
 
-    // Update the post with the new reply
-    const updatePost = await Post.findByIdAndUpdate(
+    //Added this: populate the name with the created reply
+    const populatedReply = await Reply.findById(createdReply._id).populate(
+      "name", 
+      "name"  
+    );
+    //then use the new populated reply, this contains all the info
+    const updatedPost = await Post.findByIdAndUpdate(
       postId,
-      { $push: { replies: createdReply._id } },
-      { new: true }
+      { $push: { replies: populatedReply._id } }, 
+      { new: true } 
     );
 
-    // Check if the post was updated successfully
-    if (updatePost) {
-      res.json({ message: "Reply added successfully", reply: createdReply });
+    if (updatedPost) {
+      res.json({ message: "Reply added successfully", reply: populatedReply });
     } else {
       res.status(404).json({ message: "Post not found" });
     }
   } catch (error) {
-    // Log the error and send a 500 response
-    console.log(error);
+    
+    console.error("Error creating reply:", error);
     res
       .status(500)
       .json({ message: "An error occurred while creating a reply" });
   }
 });
 
+
 /*Get the reply */
 
 router.get("/:postId/reply/:replyId", async (req, res, next) => {
   const { replyId } = req.params;
   try {
-    const response = await Reply.findById(replyId);
+    const response = await Reply.findById(replyId).populate("name", "name");
     res.json(response);
   } catch (error) {
     console.log(error);
@@ -70,10 +75,10 @@ router.put("/:postId/reply/:replyId", async (req, res, next) => {
   };
 
   try {
-    // Update the reply
     const updatedReply = await Reply.findByIdAndUpdate(replyId, putReply, {
       new: true,
-    });
+    }).populate("name", "name");
+
     if (updatedReply) {
       res.json(updatedReply);
     } else {
