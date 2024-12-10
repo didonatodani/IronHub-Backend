@@ -145,7 +145,7 @@ router.put("/:postId", async (req, res) => {
   try {
     const response = await Post.findByIdAndUpdate(postId, req.body, {
       new: true,
-    });
+    }).populate("replies");
     if (response) {
       res.json(response);
     } else {
