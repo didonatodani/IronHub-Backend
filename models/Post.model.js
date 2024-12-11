@@ -24,9 +24,6 @@ const postSchema = new Schema({
   picture: {
     type: String,
   },
-  likes: {
-    type: Number,
-  },
   replies: [{
     type: Schema.Types.ObjectId,
     ref: "Reply",

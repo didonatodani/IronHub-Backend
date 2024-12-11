@@ -46,7 +46,7 @@ router.post("/upload", fileUploader.single("picture"), (req, res, next) => {
 
 /*Create a post */
 router.post("/", async (req, res, next) => {
-  const { name, course, title, description, link, picture, likes } = req.body;
+  const { name, course, title, description, link, picture } = req.body;
 
   const newPost = {
     name,
@@ -55,7 +55,6 @@ router.post("/", async (req, res, next) => {
     description,
     link,
     picture,
-    likes,
   };
 
   try {
