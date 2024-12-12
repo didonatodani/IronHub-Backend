@@ -105,6 +105,17 @@ The features included in IronHub were carefully selected to meet the needs of Ir
 
 ---
 
+### Replies
+
+| Method | Endpoint                         | Description                                   |
+|--------|----------------------------------|-----------------------------------------------|
+| POST   | `/posts/:postId/reply`           | Create a new reply for a specific post       |
+| GET    | `/posts/:postId/reply/:replyId`  | Retrieve a single reply by ID for a post     |
+| PUT    | `/posts/:postId/reply/:replyId`  | Update a specific reply by ID for a post     |
+| DELETE | `/posts/:postId/reply/:replyId`  | Delete a specific reply by ID for a post     |
+
+---
+
 ## Configuration and Setup
 
 **Prerequisites**:
