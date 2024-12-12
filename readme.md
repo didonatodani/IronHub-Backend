@@ -1,9 +1,12 @@
-# IronHub - Backend
+
+<summary>
+  # IronHub - Backend
 
 This repository contains the backend code for **IronHub**, a forum and collaboration platform for Ironhack students. The backend is built using **Node.js**, **Express**, and **MongoDB**, following a REST API architecture to support the frontend client.
 
----
+</summary> 
 
+<details>
 ## Features
 
 - **User Authentication**:
@@ -22,6 +25,24 @@ This repository contains the backend code for **IronHub**, a forum and collabora
 
 - **Filtering and Sorting**:
   - Retrieve posts with options for filtering (e.g., by category) and sorting (e.g., by date).
+
+---
+
+##**Justification for Features**
+
+The features included in IronHub were carefully selected to meet the needs of Ironhack students:
+
+- **User Authentication** 
+  - ensures that only verified users can access and post content, maintaining a secure environment for collaboration.
+
+- **Post Management**:
+  - allows users to share insights, seek help, and contribute to discussions, creating a sense of community.
+
+- **User Profiles**:
+  - Enhances personalization and gives students the opportunity to connect more.
+
+- **Filtering and Sorting**:
+  -  help users quickly find relevant content, improving usability and engagement.
 
 ---
 
@@ -75,3 +96,56 @@ This repository contains the backend code for **IronHub**, a forum and collabora
 | GET    | `/posts/search`   | Search for posts by title            |
 
 ---
+
+**Configuration and Setup**:
+
+- **Prerequisites**:
+  - Node.js (version 14.x or higher)
+  - MongoDB (local or cloud database)
+  - A .env file containing:
+    - PORT=3000
+    - MONGO_URI=<Your MongoDB connection string>
+    - JWT_SECRET=<Your JWT secret>
+
+**Installation**:
+- **Clone the repository**:
+  - git clone https://github.com/your-username/ironhub-backend.git
+  - cd ironhub-backend
+
+- **Install dependencies**:
+  - npm install
+  - Run the development server:
+  - npm start
+  - Access the application on http://localhost:3000.
+
+
+**Credits**:
+- **IronHub was developed by**:
+  - **Dani Di Donato**:
+    - Github-link: https://github.com/didonatodani/
+    - Linkedin-link: https://www.linkedin.com/in/dani-di-donato-web-dev/
+  - **Nigel Ferreres**
+    - Github-link: https://github.com/NigelFerrefe
+    - Linkedin-link: https://www.linkedin.com/in/nigel-ferreres-felix 
+  - **Piet-Hein Schouten**
+    - Github-link: https://github.com/phsworks 
+    - Linkedin-link: https://www.linkedin.com/in/piet-hein-schouten-4a2b451bb/
+    
+Special thanks to:
+
+Ironhack Instructor: Marcel Bosch.
+
+</details>
+
+
+---
+
+
+
+
+
+
+
+
+
+
