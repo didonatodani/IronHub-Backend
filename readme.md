@@ -1,6 +1,6 @@
 
 <summary>
-  # IronHub - Backend
+  ## IronHub - Backend
 
 This repository contains the backend code for **IronHub**, a forum and collaboration platform for Ironhack students. The backend is built using **Node.js**, **Express**, and **MongoDB**, following a REST API architecture to support the frontend client.
 
@@ -10,6 +10,7 @@ https://github.com/didonatodani/ironhub-front
 </summary> 
 
 <details>
+  
 ## Features
 
 - **User Authentication**:
@@ -31,7 +32,7 @@ https://github.com/didonatodani/ironhub-front
 
 ---
 
-##**Justification for Features**
+## Justification for Features
 
 The features included in IronHub were carefully selected to meet the needs of Ironhack students:
 
@@ -100,7 +101,7 @@ The features included in IronHub were carefully selected to meet the needs of Ir
 
 ---
 
-**Configuration and Setup**:
+## Configuration and Setup
 
 - **Prerequisites**:
   - Node.js (version 14.x or higher)
@@ -122,7 +123,7 @@ The features included in IronHub were carefully selected to meet the needs of Ir
   - Access the application on http://localhost:3000.
 
 
-**Credits**:
+## Credits
 - **IronHub was developed by**:
   - **Dani Di Donato**:
     - Github-link: https://github.com/didonatodani/
