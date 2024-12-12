@@ -150,9 +150,8 @@ The features included in IronHub were carefully selected to meet the needs of Ir
     - Github-link: https://github.com/phsworks 
     - Linkedin-link: https://www.linkedin.com/in/piet-hein-schouten-4a2b451bb/
     
-Special thanks to:
-
-Ironhack Instructor: Marcel Bosch.
+- **Special thanks to**:
+  - **Ironhack Instructor Marcel Bosch.**
 
 </details>
 
