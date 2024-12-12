@@ -1,6 +1,6 @@
+  ## IronHub - Backend
 
 <summary>
-  ## IronHub - Backend
 
 This repository contains the backend code for **IronHub**, a forum and collaboration platform for Ironhack students. The backend is built using **Node.js**, **Express**, and **MongoDB**, following a REST API architecture to support the frontend client.
 
