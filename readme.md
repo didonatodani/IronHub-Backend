@@ -4,6 +4,9 @@
 
 This repository contains the backend code for **IronHub**, a forum and collaboration platform for Ironhack students. The backend is built using **Node.js**, **Express**, and **MongoDB**, following a REST API architecture to support the frontend client.
 
+**Link to the frontend-repository**:
+https://github.com/didonatodani/ironhub-front
+
 </summary> 
 
 <details>
@@ -136,7 +139,6 @@ Special thanks to:
 Ironhack Instructor: Marcel Bosch.
 
 </details>
-
 
 ---
 
