@@ -107,7 +107,7 @@ The features included in IronHub were carefully selected to meet the needs of Ir
 
 ## Configuration and Setup
 
-- **Prerequisites**:
+**Prerequisites**:
   - Node.js (version 14.x or higher)
   - MongoDB (local or cloud database)
   - A .env file containing:
