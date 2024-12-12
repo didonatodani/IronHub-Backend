@@ -7,7 +7,8 @@ This repository contains the backend code for **IronHub**, a forum and collabora
 **Link to the frontend-repository**:
 https://github.com/didonatodani/ironhub-front
 
-![Ironhub](https://github.com/user-attachments/assets/393fcef1-6ff1-42ac-9380-4b8e363b1efe)
+
+![Ironhub-logo](https://github.com/user-attachments/assets/0b9e83ce-787b-4ce7-84f0-91877321d752)
 
 
 </summary> 
